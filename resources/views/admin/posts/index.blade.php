@@ -12,6 +12,7 @@
                     <th scope="col">Slug</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Pubblico</th>
+                    <th scope="col">Tag</th>
                     <th scope="col">Azione</th>
                   </tr>
                 </thead>
@@ -22,8 +23,12 @@
                             <td>{{$post['title']}}</td>
                             <td>{{substr($post['content'], 0, 20)}}</td>
                             <td>{{$post['slug']}}</td>
-                            <td>{{$post->category_id}}</td>
+                            <td>{{$post->category['name']}}</td>
                             <td>@if ($post['public'] == 1) Si @else No @endif </td>
+                            <td>
+                                @foreach ($tags as $tag) {{$tag['name']}},
+                                @endforeach
+                            </td>
                             <td>
                                 <a href="{{route('admin.posts.show', $post->id)}}"><button class="btn btn-primary">Visualizza</button></a>
                                 <a href="{{route('admin.posts.edit', $post->id)}}"><button class="btn btn-secondary">Modifica</button></a>

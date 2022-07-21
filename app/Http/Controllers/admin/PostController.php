@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Str;
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -17,9 +18,10 @@ class PostController extends Controller
      */
     public function index()
     {
+        $tags = Tag::all();
         $categories = Category::all();
         $posts = Post::all();
-        return view('admin.posts.index', compact('posts', 'categories'));
+        return view('admin.posts.index', compact('posts', 'categories', 'tags'));
     }
 
     /**
