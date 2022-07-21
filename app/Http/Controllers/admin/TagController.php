@@ -27,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.index');
+        return view('admin.tags.create');
     }
 
     /**
@@ -87,14 +87,13 @@ class TagController extends Controller
         ]);
 
         $data = $request->all();
-        $newTag = new Tag();
-        $newTag->name = $data['name'];
+        $tag->name = $data['name'];
         if ($tag->name != $data['name']) {
-            $newTag->slug = Str::slug($data['name'], '-');
+            $tag->slug = Str::slug($data['name'], '-');
         }
-        $newTag->save();
+        $tag->save();
 
-        return redirect()->route('admin.posts.show', $newTag->id);
+        return redirect()->route('admin.tags.show', $tag->id);
     }
 
     /**

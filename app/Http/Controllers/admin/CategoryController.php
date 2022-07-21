@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.index');
+        return view('admin.categories.create');
     }
 
     /**
@@ -70,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', compact('category',));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -87,14 +87,13 @@ class CategoryController extends Controller
         ]);
 
         $data = $request->all();
-        $newCategory = new Category();
-        $newCategory->name = $data['name'];
+        $category->name = $data['name'];
         if ($category->name != $data['name']) {
-            $newCategory->slug = Str::slug($data['name'], '-');
+            $category->slug = Str::slug($data['name'], '-');
         }
-        $newCategory->save();
+        $category->save();
 
-        return redirect()->route('admin.posts.show', $newCategory->id);
+        return redirect()->route('admin.categories.show', $category->id);
     }
 
     /**
