@@ -26,7 +26,8 @@
                             <td>{{$post->category['name']}}</td>
                             <td>@if ($post['public'] == 1) Si @else No @endif </td>
                             <td>
-                                @foreach ($tags as $tag) {{$tag['name']}},
+                                @foreach ($post->tags as $tag) 
+                                    {{$tag['name']}} 
                                 @endforeach
                             </td>
                             <td>

@@ -38,6 +38,14 @@
                 @enderror
             </div>
             <div class="form-group form-check">
+                @foreach ($tags as $tag)
+                <label class="form-check-inline" for="{{$tag['name']}}">
+                    <input type="checkbox" class="form-check-input @error('tag_id') is invalid @enderror" name="tag_id[]" value="{{$tag['id']}}" @if(is_array(old('tag_id')) && in_array($tag['name'], old('tag_id'))) checked @endif>
+                    {{$tag['name']}}
+                </label>
+                @endforeach
+            </div>
+            <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input @error('public') is invalid @enderror" id="public" name="public">
                 <label class="form-check-label" for="public">Pubblica</label>
                 @error('public')

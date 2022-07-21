@@ -31,8 +31,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        return view('admin.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -49,6 +50,7 @@ class PostController extends Controller
             'content' => 'required|max:65535|string',
             'public' => 'sometimes|accepted',
             'category_id' => 'exists:categories,id|nullable', //l'id che arriva dalla select deve esistere nella tabella categories nella colonna id
+            'tag_id' => 'exists:tags,id|nullable', //l'id che arriva dalla select deve esistere nella tabella tag nella colonna id
         ]);
 
         $data = $request->all();
@@ -57,6 +59,10 @@ class PostController extends Controller
         $newPost->slug = $this->getSlug($data['title']);
         $newPost->public = isset($data['public']);
         $newPost->save();
+
+        $tag = Tag::find($data['tag_id']);
+        $newPost->tags()->attach($tag);
+        
 
         return redirect()->route('admin.posts.show', $newPost->id);
     }
@@ -80,8 +86,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -107,6 +114,9 @@ class PostController extends Controller
         $post->fill($data);
         $post->public = isset($data['public']);
         $post->save();
+
+        $tag = Tag::find($data['tag_id']);
+        $post->tags()->sync($tag);
 
         return redirect()->route('admin.posts.show', $post->id);
     }
