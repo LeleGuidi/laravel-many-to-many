@@ -13,15 +13,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($tags as $tag)
                         <tr>
-                            <th scope="row">{{$category['id']}}</th>
-                            <td>{{$category['name']}}</td>
-                            <td>{{$category['slug']}}</td>
+                            <th scope="row">{{$tag['id']}}</th>
+                            <td>{{$tag['name']}}</td>
+                            <td>{{$tag['slug']}}</td>
                             <td>
-                                <a href="{{route('admin.categories.show', $category->id)}}"><button class="btn btn-primary">Visualizza</button></a>
-                                <a href="{{route('admin.categories.edit', $category->id)}}"><button class="btn btn-secondary">Modifica</button></a>
-                                <form action="{{route('admin.categories.destroy', $category->id)}}" method="Post"> 
+                                <a href="{{route('admin.tags.show', $tag->id)}}"><button class="btn btn-primary">Visualizza</button></a>
+                                <a href="{{route('admin.tags.edit', $tag->id)}}"><button class="btn btn-secondary">Modifica</button></a>
+                                <form action="{{route('admin.tags.destroy', $tag->id)}}" method="Post"> 
                                     @csrf 
                                     @method('DELETE') 
                                     <input type="submit" class="btn btn-danger" value="Cancella">
@@ -31,7 +31,7 @@
                     @endforeach
                 </tbody>
               </table>
-            <a href="{{route('admin.categories.create')}}"><button class="btn btn-primary">Crea nuova categoria</button></a>
+            <a href="{{route('admin.tags.create')}}"><button class="btn btn-primary mt-5">Crea nuovo Tag</button></a>
         </div>
     </div>
 @endsection

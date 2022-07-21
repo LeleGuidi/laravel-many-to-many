@@ -47,7 +47,7 @@
                     </div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Modifica post</button>
+            <button type="submit" class="btn btn-primary mt-5">Modifica post</button>
         </form>
     </div>
     

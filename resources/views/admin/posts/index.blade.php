@@ -37,7 +37,7 @@
                     @endforeach
                 </tbody>
               </table>
-            <a href="{{route('admin.posts.create')}}"><button class="btn btn-primary">Crea nuovo post</button></a>
+            <a href="{{route('admin.posts.create')}}"><button class="btn btn-primary mt-5">Crea nuovo post</button></a>
         </div>
     </div>
 @endsection

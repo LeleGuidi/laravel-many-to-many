@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <h1>Aggiungi una nuova categoria</h1>
-        <form action="{{route('admin.categories.store')}}" method="Post">
+        <h1>Aggiungi un nuovo tag</h1>
+        <form action="{{route('admin.tags.store')}}" method="Post">
             @csrf
             <div class="form-group">
                 <label for="name">Nome</label>
@@ -14,7 +14,7 @@
                     </div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Crea post</button>
+            <button type="submit" class="btn btn-primary mt-5">Crea tag</button>
         </form>
     </div>
     

@@ -46,7 +46,7 @@
                     </div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Crea post</button>
+            <button type="submit" class="btn btn-primary mt-5">Crea post</button>
         </form>
     </div>
     

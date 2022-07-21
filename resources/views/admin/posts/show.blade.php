@@ -6,7 +6,7 @@
         <div class="card-body">
             {{$post->content}}
             <div>
-                <a href="{{route('admin.posts.index')}}"><button class="btn btn-primary">Torna ai posts</button></a>
+                <a href="{{route('admin.posts.index')}}"><button class="btn btn-primary mt-5">Torna ai posts</button></a>
             </div>
         </div>
 </div>
